@@ -7,15 +7,15 @@ export default defineConfig({
   build: {
     outDir: 'dist',
   },
-  server: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3000',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '/api')
-      }
-    }
-  },
+  // server: {
+  //   proxy: {
+  //     '/api': {
+  //       target: 'http://localhost:3000',
+  //       changeOrigin: true,
+  //       rewrite: (path) => path.replace(/^\/api/, '/api')
+  //     }
+  //   }
+  // },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
