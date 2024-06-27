@@ -1,0 +1,63 @@
+@import './base.css';
+
+@supports (-webkit-touch-callout: none) {
+  html, body {
+    height: -webkit-fill-available;
+  }
+
+  #app {
+    height: -webkit-fill-available;
+    
+  }
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  place-items: center;
+  background-color: rgb(24, 24, 24);
+  color: aliceblue;
+  -webkit-overflow-scrolling: touch;
+}
+
+div {
+  display: flex;
+}
+
+#app {
+  margin: 0 auto;
+  padding: 10px;
+  font-weight: normal;
+}
+
+.main-view {
+  flex-direction: column;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+a:hover {
+  background-color: hsla(160, 100%, 37%, 0.2);
+}
+
+@media (max-height: 1000px) {
+  html, body {
+    overflow: hidden;
+  }
+  #app {
+    height: 100%;
+    padding-top: 20px;
+  }
+}

@@ -1,0 +1,67 @@
+.control-panel {
+    padding-bottom: 10px;
+    flex-direction: column;
+    z-index: 100;
+}
+.control-panel .line {
+    justify-content: center;
+}
+.control-panel .line .elements-block {
+    width: 403px;
+    padding-top: 10px;
+}
+.control-panel .line .elements-block .left {
+    width: 33%;
+    justify-content: flex-start;
+
+}
+.control-panel .line .elements-block .center {
+    width: 34%;
+    justify-content: center;
+}
+.control-panel .line .elements-block .right {
+    width: 33%;
+    justify-content: flex-end;
+}
+.control-panel .line .elements-block .right .elm2 {
+    width: 24px;
+    height: 24px;
+}
+.control-panel .line .elements-block div span {
+    color: rgb(51, 208, 208);
+}
+.control-panel .line .elements-block div p {
+    font-size: 11px;
+    position: relative;
+    top: 4px;
+}
+.input-box {
+    flex-direction: column;
+    margin: 5px;
+}
+.menu-item {
+    padding: 0;
+}
+.menu-item input {
+    max-width: 74px;
+}
+.menu-item input[readonly] {
+    color:rgb(150, 150, 150);
+    pointer-events: none;
+}
+.menu-item button {
+    width: 403px;
+    height: 24px;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(13, 115, 115);
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+.menu-item button:hover {
+    background-color: rgb(51, 208, 208);
+    color: black;
+}
