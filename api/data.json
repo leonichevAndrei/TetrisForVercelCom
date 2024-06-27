@@ -1,0 +1,14 @@
+{
+  "data": [
+    { "name": "Iron Man", "points": 10000 },
+    { "name": "Spider-Man", "points": 9000 },
+    { "name": "Batman", "points": 8000 },
+    { "name": "Superman", "points": 7000 },
+    { "name": "Wonder Woman", "points": 6000 },
+    { "name": "Elsa", "points": 5000 },
+    { "name": "Luke Skywalker", "points": 4000 },
+    { "name": "Yoda", "points": 3000 },
+    { "name": "Frodo Baggins", "points": 2000 },
+    { "name": "Andrei Leonichev", "points": 1100 }
+  ]
+}
