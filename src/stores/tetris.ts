@@ -207,11 +207,17 @@ export const useTetrisStore = defineStore('tetris', () => {
   }
   function updateGameScore(linesWasCleared: number) {
     myLog("updateGameScore()");
+    console.log(linesWasCleared);
+    console.log(speedLevel.value)
+    console.log(conf.linesScore)
     score.value += calculateScorePoints(linesWasCleared, speedLevel.value, conf.linesScore);
   }
   function resetGameScore() {
     myLog("resetGameScore()");
     score.value = 0 
+  }
+  function setGameScore(setTo: number) {
+    score.value = setTo;
   }
   function updateFrames() {
     myLog("updateFrames()");
@@ -393,6 +399,7 @@ export const useTetrisStore = defineStore('tetris', () => {
     setGameState,
     updateGameScore,
     resetGameScore,
+    setGameScore,
     updateFrames,
     resetFrames,
     backToPrevSpin,
