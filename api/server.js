@@ -11,6 +11,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(cors());
+app.use(express.json()); // Middleware for parsing JSON in requests
+
 // Middleware for requests logging:
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`);
@@ -23,6 +25,7 @@ app.use(express.static(path.join(__dirname, '../dist')));
 // API endpoint:
 const filePath = path.join(__dirname, 'data.json');
 
+// GET endpoint for retrieving data from the file
 app.get('/api/handleData', (req, res) => {
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
@@ -35,6 +38,19 @@ app.get('/api/handleData', (req, res) => {
     } catch (parseErr) {
       res.status(500).json({ error: 'Error parsing JSON' });
     }
+  });
+});
+
+// POST endpoint for updating data in the file
+app.post('/api/handleData', (req, res) => {
+  const newData = req.body;
+
+  fs.writeFile(filePath, JSON.stringify(newData, null, 2), 'utf8', (err) => {
+    if (err) {
+      res.status(500).json({ error: 'Error writing to file' });
+      return;
+    }
+    res.status(200).json({ message: 'File updated successfully' });
   });
 });
 

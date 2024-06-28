@@ -61,9 +61,6 @@ onMounted(async () => {
     newHighScore.value = true;
   }
 });
-watch(apiData, () => {
-  console.log('apiData updated');
-});
 </script>
 
 <template>
