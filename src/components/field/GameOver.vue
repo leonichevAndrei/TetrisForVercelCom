@@ -14,72 +14,60 @@ const apiData: Ref<{ data: { name: string; points: number }[] }> = ref({
 const widthPixels = computed(() => tetrisStore.getWidthPixelsRef());
 const heightPixels = computed(() => tetrisStore.getHeightPixelsRef());
 
-// async function getData() {
-//   try {
-//     const response = await axios.get('/api/handleData');
-//     apiData.value = response.data;
-//   } catch (error) {
-//     console.error('Error fetching data:', error);
-//   }
-// }
-// async function updateData(newData: {
-//   data: { name: string; points: number }[];
-// }) {
-//   try {
-//     const response = await axios.post('/api/handleData', newData);
-//     console.log('Update response:', response.data);
-//   } catch (error) {
-//     console.error('Error updating data:', error);
-//   }
-// }
-// function checkName() {
-//   if (name.value.length > 20) {
-//     name.value = name.value.substring(0, 20);
-//   }
-//   const regex = /^[A-Za-z\s]+$/;
-//   if (!regex.test(name.value)) {
-//     name.value = name.value.substring(0, name.value.length - 1);
-//   }
-// }
-// function submitRecord() {
-//   if (name.value.length >= 3) {
-//     apiData.value = addToLeaderboard(
-//       apiData.value.data,
-//       name.value,
-//       tetrisStore.getScore
-//     );
-//     updateData(apiData.value);
-//     recordSubmitted.value = true;
-//   }
-// }
-// onMounted(async () => {
-//   await getData();
-//   if (
-//     apiData.value.data.length > 0 &&
-//     apiData.value.data[9].points < tetrisStore.getScore
-//   ) {
-//     newHighScore.value = true;
-//   }
-// });
-// watch(apiData, () => {
-//   console.log('apiData updated');
-// });
-
-
-onMounted(async () => {
+async function getData() {
   try {
     const response = await axios.get('/api/handleData');
-    console.log(response);
+    apiData.value = response.data;
   } catch (error) {
-    console.error("There was an error fetching the data!", error);
+    console.error('Error fetching data:', error);
   }
-  const response = await axios.get('/api/handleData');
-  console.log(response);
-})
+}
+async function updateData(newData: {
+  data: { name: string; points: number }[];
+}) {
+  try {
+    const response = await axios.post('/api/handleData', newData);
+    console.log('Update response:', response.data);
+  } catch (error) {
+    console.error('Error updating data:', error);
+  }
+}
+function checkName() {
+  if (name.value.length > 20) {
+    name.value = name.value.substring(0, 20);
+  }
+  const regex = /^[A-Za-z\s]+$/;
+  if (!regex.test(name.value)) {
+    name.value = name.value.substring(0, name.value.length - 1);
+  }
+}
+function submitRecord() {
+  if (name.value.length >= 3) {
+    apiData.value = addToLeaderboard(
+      apiData.value.data,
+      name.value,
+      tetrisStore.getScore
+    );
+    updateData(apiData.value);
+    recordSubmitted.value = true;
+  }
+}
+onMounted(async () => {
+  await getData();
+  if (
+    apiData.value.data.length > 0 &&
+    apiData.value.data[9].points < tetrisStore.getScore
+  ) {
+    newHighScore.value = true;
+  }
+});
+watch(apiData, () => {
+  console.log('apiData updated');
+});
 </script>
 
 <template>
-  <!--<div
+  <div
     v-if="apiData.data.length > 0"
     class="sub-field"
     :style="{
@@ -114,7 +102,7 @@ onMounted(async () => {
         </table>
       </div>
     </div>
-  </div>-->
+  </div>
 </template>
 
 <style>
