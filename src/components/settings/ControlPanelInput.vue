@@ -1,4 +1,4 @@
-<script setup lang='ts'>
+<script setup lang="ts">
 import { onMounted, ref, watch } from 'vue';
 
 const props = defineProps(['title', 'range', 'value', 'updateStoreFunc']);
@@ -42,22 +42,24 @@ watch(inputValue, (newInputValue) => {
   if (newInputValue >= props.range.min) {
     props.updateStoreFunc(parseInt(newInputValue));
   }
-})
+});
 
 onMounted(() => {
-  isMobile.value = /android|iPad|iPhone|iPod/i.test(navigator.userAgent) && (props.title == 'Width' || props.title == 'Height');
+  isMobile.value =
+    /android|iPad|iPhone|iPod/i.test(navigator.userAgent) &&
+    (props.title == 'Width' || props.title == 'Height');
 });
 </script>
 
 <template>
-  <div class='menu-item'>
-    <label>{{title}}:&nbsp;</label>
-    <input 
-      v-model='inputValue'
-      @input='checkAndSetInputValue'
-      @keyup.enter='checkInputOnBlur'
-      @focus='checkInputOnFocus'
-      @blur='checkInputOnBlur'
+  <div class="menu-item">
+    <label>{{ title }}:&nbsp;</label>
+    <input
+      v-model="inputValue"
+      @input="checkAndSetInputValue"
+      @keyup.enter="checkInputOnBlur"
+      @focus="checkInputOnFocus"
+      @blur="checkInputOnBlur"
       v-bind:readonly="isMobile"
     />
   </div>

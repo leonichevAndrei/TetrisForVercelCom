@@ -86,7 +86,8 @@ body {
 }
 
 /* Disable text highlighting and standard long press behavior */
-body, button {
+body,
+button {
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10+ */
   user-select: none; /* Standard syntax */

@@ -246,7 +246,7 @@ export function addToLeaderboard(
   points: number
 ) {
   const newData = JSON.parse(JSON.stringify(oldData));
-  for(const [index, record] of newData.entries()) {
+  for (const [index, record] of newData.entries()) {
     if (record.points < points) {
       newData.splice(index, 0, { name, points });
       newData.pop();

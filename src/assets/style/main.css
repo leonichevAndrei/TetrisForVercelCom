@@ -1,17 +1,18 @@
 @import './base.css';
 
 @supports (-webkit-touch-callout: none) {
-  html, body {
+  html,
+  body {
     height: -webkit-fill-available;
   }
 
   #app {
     height: -webkit-fill-available;
-    
   }
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   margin: 0;
@@ -53,7 +54,8 @@ a:hover {
 }
 
 @media (max-height: 1000px) {
-  html, body {
+  html,
+  body {
     overflow: hidden;
   }
   #app {

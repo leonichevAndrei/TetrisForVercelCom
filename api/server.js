@@ -2,7 +2,10 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import cors from 'cors';
-import { initializeApp } from 'firebase/app';
+import { initializeApp } 
+
+
+from 'firebase/app';
 import { getDatabase, ref, get, set } from 'firebase/database';
 import admin from 'firebase-admin';
 
@@ -11,19 +14,22 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Import service account JSON file with assertion
-const serviceAccount = await import(path.resolve(__dirname, 'serviceAccountKey.json'), {
-  assert: { type: 'json' }
-});
+const serviceAccount = await import(
+  path.resolve(__dirname, 'serviceAccountKey.json'),
+  {
+    assert: { type: 'json' },
+  }
+);
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAWvScjjrF5h8AdyWtepnKu1bndH4_kHvQ",
-  authDomain: "leonichevtetrisdb.firebaseapp.com",
-  projectId: "leonichevtetrisdb",
-  storageBucket: "leonichevtetrisdb.appspot.com",
-  messagingSenderId: "535945416783",
-  appId: "1:535945416783:web:5a4086a95807f91ebe9a3a",
-  databaseURL: "https://leonichevtetrisdb-default-rtdb.firebaseio.com/"
+  apiKey: 'AIzaSyAWvScjjrF5h8AdyWtepnKu1bndH4_kHvQ',
+  authDomain: 'leonichevtetrisdb.firebaseapp.com',
+  projectId: 'leonichevtetrisdb',
+  storageBucket: 'leonichevtetrisdb.appspot.com',
+  messagingSenderId: '535945416783',
+  appId: '1:535945416783:web:5a4086a95807f91ebe9a3a',
+  databaseURL: 'https://leonichevtetrisdb-default-rtdb.firebaseio.com/',
 };
 
 // Initialize Firebase
@@ -33,7 +39,7 @@ const database = getDatabase(app);
 // Initialize Firebase Admin
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount.default),
-  databaseURL: firebaseConfig.databaseURL
+  databaseURL: firebaseConfig.databaseURL,
 });
 
 const server = express();
@@ -65,7 +71,9 @@ server.get('/api/handleData', (req, res) => {
       }
     })
     .catch((error) => {
-      res.status(500).json({ error: 'Error reading data from Firebase', details: error });
+      res
+        .status(500)
+        .json({ error: 'Error reading data from Firebase', details: error });
     });
 });
 
@@ -78,7 +86,9 @@ server.post('/api/handleData', (req, res) => {
       res.status(200).json({ message: 'Data updated successfully' });
     })
     .catch((error) => {
-      res.status(500).json({ error: 'Error writing data to Firebase', details: error });
+      res
+        .status(500)
+        .json({ error: 'Error writing data to Firebase', details: error });
     });
 });
 

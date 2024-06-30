@@ -6,6 +6,6 @@ import elm5 from './elm-five.ts';
 import elm6 from './elm-one-mirror.ts';
 import elm7 from './elm-four-mirror.ts';
 
-const allElements = [ elm1, elm2, elm3, elm4, elm5, elm6, elm7 ];
+const allElements = [elm1, elm2, elm3, elm4, elm5, elm6, elm7];
 
 export default allElements;
